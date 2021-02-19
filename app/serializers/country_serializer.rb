@@ -1,4 +1,4 @@
 class CountrySerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :name, :language, :continent 
 end

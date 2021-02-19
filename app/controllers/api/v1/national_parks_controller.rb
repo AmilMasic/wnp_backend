@@ -2,13 +2,13 @@ class Api::V1::NationalParksController < ApplicationController
 
   def index
     national_parks = NationalPark.all
-    render json: national_parks
+    render json: NationalParkSerializer.new(national_parks)
   end
 
   def create
     national_park = NationalPark.create(national_park_params)
     if national_park.save
-      render json: national_park, status: :accepted
+      render json: NationalParkSerializer.new(national_park), status: :accepted
     else
       render json: {errors: national_park.errors.full_messages}, status: :unprocessible_entity
     end

@@ -1,13 +1,13 @@
 class Api::V1::CountriesController < ApplicationController
   def index
     countries = Country.all
-    render json: countries
+    render json: CountrySerializer.new(countries)
   end
 
   def create
     country = Country.create(country_params)
     if country.save
-      render json: country, status: :accepted
+      render json: CountrySerializer.new(country), status: :accepted
     else
       render json: {errors: country.errors.full_messages}, status: :unprocessible_entity
     end
