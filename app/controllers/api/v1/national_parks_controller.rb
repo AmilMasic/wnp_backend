@@ -17,6 +17,6 @@ class Api::V1::NationalParksController < ApplicationController
   private
 
   def national_park_params
-    params.require(:national_park).permit(:name, :established, :description, :image_url, :country_id)
+    params.require(:national_park).permit(:name, :established, :description, :image_url, :nearest_city, :country_id)
   end
 end
